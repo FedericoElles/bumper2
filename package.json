@@ -1,13 +1,17 @@
 {
     "name": "bumper2",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Updates package and bower version numbers",
-    "main": "bumper.js",
+    "main": "./bumper.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "engines": {
+        "node": ">=0.8.0"
+    },
+    "preferGlobal": "true",
     "bin": {
-        "bump": "bumper.js"
+        "bump": "./bumper.js"
     },
     "author": "Federico",
     "license": "MIT"
