@@ -1,0 +1,14 @@
+{
+    "name": "bumper2",
+    "version": "0.0.3",
+    "description": "Updates package and bower version numbers",
+    "main": "bumper.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "bump": "bumper.js"
+    },
+    "author": "Federico",
+    "license": "MIT"
+}
