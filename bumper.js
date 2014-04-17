@@ -1,16 +1,20 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-    //TODO: require('shelljs/global'), //https://github.com/arturadib/shelljs
-    PATH = '/',
+"use strict";
+require('shelljs/global');
 
+
+var fs = require('fs'),
+    shell = require('shelljs'),
+    PATH = '/',
     currentFolder,
     packageVersion,
     bowerVersion,
     version,
     versionNumbers,
     userV,
-    cmd
+    cmd,
+    cmds
     ;
     
 currentFolder = __dirname + '/' + PATH;    
@@ -52,6 +56,7 @@ userV = (version.substr(1).toLowercase === "v");
 versionNumbers = version.replace('v').split('.');
 
 var _increase = function(array, position){
+  var num;
   if (position < array.length){
     num = parseInt(array[position],10);
     if (!isNaN(num)){
@@ -60,16 +65,20 @@ var _increase = function(array, position){
   }
 }
 
+var _zerofy = function(array, position){
+  for (var i=position,ii=array.length;i<ii;i+=1){
+    array[i] = '0';
+  }
+}
+
+
+
 var _updateFiles  = function(){
   var newVersion = versionNumbers.join('.');
   console.log('---------------------------------');
   console.log('New version:            ' + newVersion);
   _updateVersion('package.json', newVersion);
-  _updateVersion('bower.json', newVersion);
-  console.log('\GIT:')
-  console.log('git tag -a v' + newVersion + ' -m "Bumped to version v' + newVersion + '"');
-  console.log('git push --tags');
-  
+  _updateVersion('bower.json', newVersion); 
 }
 
 var _updateVersion = function(filename, version){
@@ -87,9 +96,13 @@ var _updateVersion = function(filename, version){
   }
 }
 
+
+
+
 if (process.argv.length>=3){
   cmd = process.argv[2];
   
+
   switch(cmd)
   {
   case 'r': //revision = last
@@ -98,18 +111,44 @@ if (process.argv.length>=3){
     break;
   case 'major': //major = first
     _increase(versionNumbers,0);
+    _zerofy(versionNumbers,1);
     _updateFiles();  
     break;
   case 'minor': //minor = second
     _increase(versionNumbers,1);
+    _zerofy(versionNumbers,2);
     _updateFiles();    
     break;   
   case 'build': //build = third
     _increase(versionNumbers,2);
+    _zerofy(versionNumbers,3);
     _updateFiles();   
-    break;    
+    break;        
+  case 'tag':
+    if (!shell.which('git')) {
+      console.log('Sorry, this script requires git');
+      shell.exit(1);
+    }
+    
+    cmds = [
+      'git tag -a v' + version + ' -m "Bumped to version v' + version + '"',
+      'git push --tags'
+    ];
+
+    for (var i = 0, ii = cmds.length; i<ii; i+=1){
+      console.log(cmds[i]);
+      console.log(shell.exec(cmds[i], {silent:false}).output);
+    }
+    break;
   default:
     console.log('Unknown command "' + cmd + '"... exiting.');
+    console.log('');
+    console.log('Available commands:');
+    console.log('bump r     = 0.0.0 --> 0.0.1');
+    console.log('bump major = 1.2.3 --> 2.0.0');
+    console.log('bump minor = 0.1.2 --> 0.2.0');
+    console.log('bump build = 0.0.1.2 --> 0.0.2.0');
+    console.log('bump tag   = git tag and push tags');
   }
   
 } else {

@@ -1,6 +1,6 @@
 {
     "name": "bumper2",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "description": "Updates package and bower version numbers",
     "main": "./bumper.js",
     "scripts": {
@@ -14,5 +14,8 @@
         "bump": "./bumper.js"
     },
     "author": "Federico",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "shelljs": "^0.2.6"
+    }
 }
