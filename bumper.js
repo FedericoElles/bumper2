@@ -17,10 +17,11 @@ var fs = require('fs'),
     cmds
     ;
     
-currentFolder = __dirname + '/' + PATH;    
+currentFolder = process.cwd() + '/' + PATH;    
 
 //console.log(process.argv);
 //console.log('Current Folder: ' + currentFolder);
+//console.log('process.cwd()',process.cwd());
 
 
 var _readVersion = function(filename){
