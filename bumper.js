@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require('fs'),
     //TODO: require('shelljs/global'), //https://github.com/arturadib/shelljs
     PATH = '/',
@@ -65,8 +67,8 @@ var _updateFiles  = function(){
   _updateVersion('package.json', newVersion);
   _updateVersion('bower.json', newVersion);
   console.log('\GIT:')
-  console.log("git tag -a v" + newVersion + " -m 'Bumped to version v" + newVersion + "'");
-  console.log("git push --tags");
+  console.log('git tag -a v' + newVersion + ' -m "Bumped to version v' + newVersion + '"');
+  console.log('git push --tags');
   
 }
 
