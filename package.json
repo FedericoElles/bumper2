@@ -1,8 +1,8 @@
 {
     "name": "bumper2",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Updates package and bower version numbers",
-    "main": "./bumper.js",
+    "main": "./bumper2.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -11,11 +11,15 @@
     },
     "preferGlobal": "true",
     "bin": {
-        "bump": "./bumper.js"
+        "bump": "./bumper2.js"
     },
     "author": "Federico",
     "license": "MIT",
     "dependencies": {
         "shelljs": "^0.2.6"
+    },
+    "repository" : {
+      "type" : "git",
+      "url" : "https://github.com/FedericoElles/bumper2"
     }
 }
