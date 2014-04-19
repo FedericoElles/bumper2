@@ -21,16 +21,31 @@ npm install bumper2 -g
 ## Usage ##
 
 
-    $bump r
+    $ bump r
     #0.0 --> 0.1
 	#0.0.0 --> 0.0.1
 	#0.0.0.0 --> 0.0.0.1
 
-	$bump major
+	$ bump major
 	#0.0.0 --> 1.0.0
 
-	$bump minor
+	$ bump minor
 	#0.0.0 --> 0.1.0
 
-	$bump build
-	#0.0.0.0 --> 0.0.1
+	$ bump build
+	#0.0.0.0 --> 0.0.1.0
+	
+## Bonus Feature: Git Tagging ##
+
+Reads current version number and creates a tag in git and saves it to master
+
+    $ bump tag
+    [--BUMPER--]
+    package.json version:   0.1.2
+    bower.json: not found
+    git tag -a v0.1.2 -m "Bumped to version v0.1.2"
+    
+    git push --tags
+    To git@github.com:
+     * [new tag]         v0.1.2 -> v0.1.2
+
