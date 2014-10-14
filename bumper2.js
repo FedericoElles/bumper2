@@ -91,7 +91,7 @@ var _updateVersion = function(filename, version){
     if (packageData){
       packageJson = JSON.parse(packageData);
       packageJson.version = version;
-      packageData = JSON.stringify(packageJson, null, 4);
+      packageData = JSON.stringify(packageJson, null, 2);
       fs.writeFileSync(currentFolder + filename, packageData);
     }
   }
