@@ -32,7 +32,7 @@ npm install bumper2 -g
 	$ bump minor
 	#0.0.0 --> 0.1.0
 
-	$ bump build
+	$ bump patch
 	#0.0.0.0 --> 0.0.1.0
 	
 ## Bonus Feature: Git Tagging ##
