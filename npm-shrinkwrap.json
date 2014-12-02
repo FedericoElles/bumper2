@@ -1,0 +1,11 @@
+{
+  "name": "bumper2",
+  "version": "0.2.0",
+  "dependencies": {
+    "shelljs": {
+      "version": "0.3.0",
+      "from": "shelljs@0.3.0",
+      "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.3.0.tgz"
+    }
+  }
+}
