@@ -1,6 +1,6 @@
 {
     "name": "bumper2",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Updates package and bower version numbers",
     "main": "./bumper2.js",
     "scripts": {
