@@ -120,7 +120,7 @@ if (process.argv.length>=3){
     _zerofy(versionNumbers,2);
     _updateFiles();    
     break;   
-  case 'build': //build = third
+  case 'patch': //patch = third
     _increase(versionNumbers,2);
     _zerofy(versionNumbers,3);
     _updateFiles();   
@@ -148,7 +148,7 @@ if (process.argv.length>=3){
     console.log('bump r     = 0.0.0 --> 0.0.1');
     console.log('bump major = 1.2.3 --> 2.0.0');
     console.log('bump minor = 0.1.2 --> 0.2.0');
-    console.log('bump build = 0.0.1.2 --> 0.0.2.0');
+    console.log('bump patch = 0.0.1.2 --> 0.0.2.0');
     console.log('bump tag   = git tag and push tags');
   }
   
